@@ -1,0 +1,9 @@
+[http]
+	postBuffer = 52428800
+[core]
+	editor = vim
+[push]
+	autoSetupRemote = true
+[user]
+	email = krelesser@yandex.ru
+	name = Anton Alexandrin
