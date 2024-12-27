@@ -21,7 +21,10 @@ return {
 					"css",
 					"html",
 					"rust",
-				}, -- csv, dockerfile, prisma, python, sql, json, diff
+					"kotlin",
+					"java",
+					"sql",
+				}, -- csv, dockerfile, prisma, python, json, diff
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -85,7 +88,7 @@ return {
 			local config = require("lualine")
 			config.setup({
 				sections = {
-					lualine_c = { { "filename", path = 1 }, "buffers" },
+					lualine_c = { { "filename", path = 1 } },
 					lualine_x = {
 						function()
 							local ok, pomo = pcall(require, "pomo")
