@@ -24,8 +24,12 @@ return {
 					"kotlin",
 					"java",
 					"sql",
+					"gdscript",
+					"godot_resource",
+					"gdshader",
 				}, -- csv, dockerfile, prisma, python, json, diff
 				sync_install = false,
+				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
@@ -49,12 +53,10 @@ return {
 						prompt_position = "top",
 						width = 0.8,
 						height = 0.95,
-						-- vertical = { width = 0.8 },
 					},
 				},
 				pickers = {
 					buffers = {
-						-- previewer = false,
 						mappings = {
 							i = {
 								["<c-d>"] = "delete_buffer",
