@@ -1,0 +1,26 @@
+# A complete reference of available options can be found in `man 5 tofi`.
+
+font-size = 10
+selection-color = #FF0000
+prompt-text = "> "
+
+width = 240
+height = 160
+
+# background-color = #1B1D1E
+background-color = #0000FF
+outline-width = 0
+border-width = 1
+border-color = #FFFFFF
+
+padding-top = 4
+padding-bottom = 4
+padding-left = 4
+padding-right = 4
+
+# Whether to scale the window by the output's scale factor.
+scale = true
+
+# The name of the output to appear on. An empty string will use the
+# default output chosen by the compositor.
+output = ""
