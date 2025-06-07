@@ -1,0 +1,56 @@
+# needed for screen capture using xdg-desktop-portal-wlr
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+set $mod super
+
+set $allmenu tofi-run --font /usr/local/share/fonts/JetBrainsMonoNerdFont-Medium.ttf | xargs swaymsg exec --
+set $appsmenu tofi-drun --font /usr/local/share/fonts/JetBrainsMonoNerdFont-Medium.ttf | xargs swaymsg exec --
+
+include ~/.config/i3/base_config
+
+bindsym Print exec grim
+
+# displays
+# swaymsg -t get_outputs
+
+output * bg ~/wp/billiards.jpg fill
+
+output DP-2 resolution 2560x1440 position 1440,0
+
+bindsym $mod+Shift+p exec wl-present mirror eDP-1 --fullscreen-output DP-4 --fullscreen
+
+# lock after 100s of inactivity
+# turn off displays after 200s
+exec swayidle -w \
+         timeout 100 'swaylock -f -c 000000' \
+         timeout 200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+
+# inputs
+# swaymsg -t get_inputs
+
+input "type:touchpad" {
+    tap enabled
+    scroll_factor 0.15
+}
+
+input "type:keyboard" {
+    repeat_delay 200
+    repeat_rate 32
+    xkb_layout us,ru
+    xkb_options grp:caps_toggle
+}
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+include /etc/sway/config.d/*
