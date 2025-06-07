@@ -90,6 +90,20 @@ return {
 			local config = require("lualine")
 			config.setup({
 				sections = {
+					lualine_b = {
+						{
+							"branch",
+							fmt = function(str)
+								if string.find(str, "feature") then
+									return str:sub(22, string.len(str))
+								end
+								if string.find(str, "bugfix") then
+									return str:sub(21, string.len(str))
+								end
+								return str
+							end,
+						},
+					},
 					lualine_c = { { "filename", path = 1 } },
 					lualine_x = {
 						function()
