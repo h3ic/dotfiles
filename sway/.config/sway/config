@@ -2,29 +2,68 @@
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 set $mod super
+set $d1 'Microstep MSI G274QPF CC2H663809472'
+set $d2 'Philips Consumer Electronics Company PHL 275E1 0x0000BA13'
 
 set $allmenu tofi-run --font /usr/local/share/fonts/JetBrainsMonoNerdFont-Medium.ttf | xargs swaymsg exec --
 set $appsmenu tofi-drun --font /usr/local/share/fonts/JetBrainsMonoNerdFont-Medium.ttf | xargs swaymsg exec --
 
 include ~/.config/i3/base_config
 
-bindsym Print exec grim
+bindsym $mod+m exec grim -g "$(slurp)" - | wl-copy
 
 # displays
 # swaymsg -t get_outputs
 
-output * bg ~/wp/billiards.jpg fill
+output * bg ~/wp/pop_space.jpg fill
 
-output DP-2 resolution 2560x1440 position 1440,0
+output $d2 mode 2560x1440@75Hz position 0,0
+output $d1 mode 2560x1440@165Hz position 2560,0
 
-bindsym $mod+Shift+p exec wl-present mirror eDP-1 --fullscreen-output DP-4 --fullscreen
+# bindsym $mod+Shift+p exec wl-present mirror eDP-1 --fullscreen-output DP-4 --fullscreen
 
-# lock after 100s of inactivity
-# turn off displays after 200s
 exec swayidle -w \
-         timeout 100 'swaylock -f -c 000000' \
-         timeout 200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 400 'swaylock -f -c 000000' \
+         timeout 500 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
+
+assign [class="com.mitchellh.ghostty"] 1
+assign [class="Godot"] 2
+
+assign [title="Chromium"] 2
+assign [app_id="chromium"] 2
+
+assign [app_id="firefox"] 3
+
+assign [app_id="org.telegram.desktop"] 4
+
+assign [class="Spotify"] 4
+assign [app_id="spotify"] 4
+
+assign [class="Wfica"] 5
+
+assign [class="Yandex-browser"] 6
+assign [app_id="yandex-browser"] 6
+for_window [class="Yandex-browser"] exec swaymsg "workspace 6"
+for_window [app_id="yandex-browser"] exec swaymsg "workspace 6"
+
+assign [app_id="AmneziaVPN"] 7
+for_window [app_id="AmneziaVPN"] exec swaymsg "workspace 7"
+
+
+workspace 1 output $d1
+workspace 2 output $d2
+workspace 3 output $d1
+workspace 4 output $d1
+workspace 5 output $d1
+workspace 6 output $d1
+
+exec swaymsg "workspace 1; exec $term"
+exec swaymsg "workspace 3; exec firefox"
+exec swaymsg "workspace 4; exec Telegram"
+exec spotify
+
+exec 'sleep 1; swaymsg workspace 1'
 
 # inputs
 # swaymsg -t get_inputs
@@ -39,6 +78,10 @@ input "type:keyboard" {
     repeat_rate 32
     xkb_layout us,ru
     xkb_options grp:caps_toggle
+}
+
+input "1386:769:Wacom_Bamboo_One_M_Pen" {
+    map_to_output $d1
 }
 
 # Drag floating windows by holding down $mod and left mouse button.
