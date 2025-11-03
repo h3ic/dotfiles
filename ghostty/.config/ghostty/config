@@ -8,7 +8,6 @@
 # The template does not set any default options, since Ghostty ships
 # with sensible defaults for all options. Users should only need to set
 # options that they want to change from the default.
-#
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
 # Additionally, each config option is also explained in detail
@@ -41,11 +40,13 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-font-family = JetBrainsMono # was optional
+# was optional
+font-family = JetBrainsMono
 font-size = 10
 font-feature = -calt, -liga, -dlig
 
-background-opacity = 0.85 # was optional
+# was optional
+background-opacity = 0.85
 background = #000000
 foreground = #ffffff
 
