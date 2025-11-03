@@ -27,3 +27,5 @@ vim.opt.signcolumn = "yes"
 -- pomo.nvim
 vim.cmd.cnoreabbrev("PS", "TimerStart 25m Work")
 vim.cmd.cnoreabbrev("PB", "TimerStart 5m Break")
+
+vim.diagnostic.config({ virtual_text = true })

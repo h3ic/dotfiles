@@ -28,12 +28,13 @@ return {
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
+			-- local lspconfig = require("lspconfig")
 
 			local servers = { "lua_ls", "ts_ls", "cssls" } -- tailwindcss
 
 			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup({ capabilities = capabilities })
+				-- lspconfig[lsp].setup({ capabilities = capabilities })
+				vim.lsp.config(lsp, capabilities)
 			end
 
 			-- *** godot ***
@@ -41,7 +42,9 @@ return {
 			vim.keymap.set("n", "<leader>DD", function()
 				vim.fn.serverstart("127.0.0.1:6004")
 			end, { noremap = true })
-			lspconfig.gdscript.setup({ capabilities = capabilities })
+			-- lspconfig.gdscript.setup({ capabilities = capabilities })
+
+			vim.lsp.config("gdscript", capabilities)
 
 			-- *** end of godot ***
 
