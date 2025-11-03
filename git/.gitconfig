@@ -7,3 +7,6 @@
 [user]
 	email = krelesser@yandex.ru
 	name = Anton Alexandrin
+[pager]
+	branch = false
+	stash = false

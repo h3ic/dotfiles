@@ -41,10 +41,11 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+font-family = JetBrainsMono # was optional
 font-size = 10
 font-feature = -calt, -liga, -dlig
 
-background-opacity = 0.90
+background-opacity = 0.85 # was optional
 background = #000000
 foreground = #ffffff
 
