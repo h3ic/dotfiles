@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			local config = require("nvim-treesitter.configs")
+			local config = require("nvim-treesitter.config")
 			config.setup({
 				ensure_installed = {
 					"lua",
@@ -37,7 +37,6 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local builtin = require("telescope.builtin")
@@ -176,15 +175,15 @@ return {
 			})
 		end,
 	},
-	{
-		"epwalsh/pomo.nvim",
-		version = "*",
-		lazy = true,
-		cmd = { "TimerStart", "TimerRepeat" },
-		opts = {},
-		-- dependencies = {
-		-- Optional, but highly recommended if you want to use the "Default" timer
-		-- "rcarriga/nvim-notify",
-		-- },
-	},
+	-- {
+	-- 	"epwalsh/pomo.nvim",
+	-- 	version = "*",
+	-- 	lazy = true,
+	-- 	cmd = { "TimerStart", "TimerRepeat" },
+	-- 	opts = {},
+	-- 	-- dependencies = {
+	-- 	-- Optional, but highly recommended if you want to use the "Default" timer
+	-- 	-- "rcarriga/nvim-notify",
+	-- 	-- },
+	-- },
 }
