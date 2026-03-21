@@ -55,3 +55,4 @@ keybind = ctrl+c=copy_to_clipboard
 keybind = ctrl+shift+c=text:\x03
 
 window-decoration = none
+confirm-close-surface = false
